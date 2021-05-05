@@ -10,7 +10,7 @@ import Header from '../Header';
 // == Composant
 const Converter = () => (
   <div className="converter">
-    <Header />
+    <Header baseAmount={1} />
     <Currencies />
     <Amount />
   </div>

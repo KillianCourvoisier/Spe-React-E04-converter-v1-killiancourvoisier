@@ -2,11 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './style.scss';
 
-const Header = () => (
+const Header = ({ baseAmount }) => (
   <div className="header">
     <h1 className="header-title">Converter</h1>
-    <p className="header-amount">1 Euro</p>
+    <p className="header-amount">{baseAmount} Euro</p>
   </div>
 );
 
+Header.propTypes = {
+  baseAmount: PropTypes.number.isRequired,
+};
 export default Header;
