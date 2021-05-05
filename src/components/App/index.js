@@ -3,15 +3,18 @@ import React from 'react';
 
 // == Import
 import './styles.css';
+import Amount from '../Amount';
+import Currencies from '../Currencies';
+import Header from '../Header';
 
 // == Composant
-const App = () => (
-  <div className="app">
-    <div>Header</div>
-    <div>Currencies</div>
-    <div>Amount</div>
+const Converter = () => (
+  <div className="converter">
+    <Header />
+    <Currencies />
+    <Amount />
   </div>
 );
 
 // == Export
-export default App;
+export default Converter;
