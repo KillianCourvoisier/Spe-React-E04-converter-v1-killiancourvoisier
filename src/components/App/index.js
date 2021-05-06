@@ -9,6 +9,7 @@ import Currencies from '../Currencies';
 import Header from '../Header';
 
 import currenciesList from '../../data/currencies';
+import Toggler from '../Toggler';
 
 class Converter extends React.Component {
   state = {
@@ -36,11 +37,7 @@ class Converter extends React.Component {
     return (
       <div className="converter">
         <Header baseAmount={1} />
-        <button
-          onClick={this.toggle}
-          type="button"
-        >Toggle
-        </button>
+        <Toggler open={opened} toggle={this.toggle} />
         {
           opened && <Currencies currenciesList={currenciesList} />
         }
