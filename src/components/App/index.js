@@ -38,11 +38,15 @@ class Converter extends React.Component {
     const currencyObject = currenciesList.find(
       (currencyInArray) => currencyInArray.name === selectedCurrency,
     );
-    return (baseAmount * currencyObject.rate).toFixed(2);
+    return parseInt((baseAmount * currencyObject.rate), 10).toFixed(2);
   }
 
   changeBaseValue = (newBaseValue) => {
     this.setState({ baseAmount: newBaseValue });
+  }
+
+  changeCurrencyValue = (newCurrencyValue) => {
+    this.setState({ selectedCurrency: newCurrencyValue });
   }
 
   render() {
@@ -53,7 +57,12 @@ class Converter extends React.Component {
         <Header baseAmount={baseAmount} onInputChange={this.changeBaseValue} />
         <Toggler open={opened} toggle={this.toggle} />
         {
-          opened && <Currencies currenciesList={currenciesList} />
+          opened && (
+          <Currencies
+            currenciesList={currenciesList}
+            onCurrencyClick={this.changeCurrencyValue}
+          />
+          )
         }
         <Amount value={this.calculate()} currency={selectedCurrency} />
       </div>
