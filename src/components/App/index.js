@@ -14,7 +14,7 @@ import Toggler from '../Toggler';
 class Converter extends React.Component {
   state = {
     opened: true,
-    prenom: 'tata',
+    baseAmount: 1,
   }
 
   toggle = () => {
@@ -31,33 +31,23 @@ class Converter extends React.Component {
     });
   }
 
+  calculate = () => this.state.baseAmount * 1.09
+
   render() {
     // Je récupère ce qui se trouve dans this.state.opened
-    const { opened } = this.state;
+    const { opened, baseAmount } = this.state;
     return (
       <div className="converter">
-        <Header baseAmount={1} />
+        <Header baseAmount={baseAmount} />
         <Toggler open={opened} toggle={this.toggle} />
         {
           opened && <Currencies currenciesList={currenciesList} />
         }
-        <Amount value={1.09} currency="United States Dollar" />
+        <Amount value={this.calculate()} currency="United States Dollar" />
       </div>
     );
   }
 }
-
-// == Composant
-// const Converter = () => (
-//   <div className="converter">
-//     <Header baseAmount={1} />
-//     {
-//       true && <Currencies currenciesList={currenciesList} />
-//     }
-
-//     <Amount value={1.09} currency="United States Dollar" />
-//   </div>
-// );
 
 // == Export
 export default Converter;
