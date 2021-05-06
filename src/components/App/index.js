@@ -15,6 +15,7 @@ class Converter extends React.Component {
   state = {
     opened: true,
     baseAmount: 1,
+    selectedCurrency: 'United States Dollar',
   }
 
   toggle = () => {
@@ -31,11 +32,18 @@ class Converter extends React.Component {
     });
   }
 
-  calculate = () => this.state.baseAmount * 1.09
+  // eslint-disable-next-line arrow-body-style
+  calculate = () => {
+    const { baseAmount, selectedCurrency } = this.state;
+    const currencyObject = currenciesList.find(
+      (currencyInArray) => currencyInArray.name === selectedCurrency,
+    );
+    return (baseAmount * currencyObject.rate).toFixed(2);
+  }
 
   render() {
     // Je récupère ce qui se trouve dans this.state.opened
-    const { opened, baseAmount } = this.state;
+    const { opened, baseAmount, selectedCurrency } = this.state;
     return (
       <div className="converter">
         <Header baseAmount={baseAmount} />
@@ -43,7 +51,7 @@ class Converter extends React.Component {
         {
           opened && <Currencies currenciesList={currenciesList} />
         }
-        <Amount value={this.calculate()} currency="United States Dollar" />
+        <Amount value={this.calculate()} currency={selectedCurrency} />
       </div>
     );
   }
