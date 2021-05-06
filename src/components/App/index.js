@@ -41,12 +41,16 @@ class Converter extends React.Component {
     return (baseAmount * currencyObject.rate).toFixed(2);
   }
 
+  changeBaseValue = (newBaseValue) => {
+    this.setState({ baseAmount: newBaseValue });
+  }
+
   render() {
     // Je récupère ce qui se trouve dans this.state.opened
     const { opened, baseAmount, selectedCurrency } = this.state;
     return (
       <div className="converter">
-        <Header baseAmount={baseAmount} />
+        <Header baseAmount={baseAmount} onInputChange={this.changeBaseValue} />
         <Toggler open={opened} toggle={this.toggle} />
         {
           opened && <Currencies currenciesList={currenciesList} />
