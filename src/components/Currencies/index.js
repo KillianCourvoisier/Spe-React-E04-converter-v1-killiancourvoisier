@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import './style.scss';
 
 const Currencies = ({
-  currenciesList, onCurrencyClick, selectedCurrency, onFilterChange,
+  currenciesList, onCurrencyClick, selectedCurrency, onFilterChange, filterText,
 }) => (
   <div className="currencies">
     <div className="currencies-title">
@@ -11,6 +11,7 @@ const Currencies = ({
         type="text"
         className="currencies-search "
         placeholder="Filtrer les devises"
+        value={filterText}
         onChange={(evt) => {
           const textInput = evt.target.value;
           onFilterChange(textInput);
@@ -44,6 +45,7 @@ Currencies.propTypes = {
   onCurrencyClick: PropTypes.func.isRequired,
   selectedCurrency: PropTypes.string.isRequired,
   onFilterChange: PropTypes.func.isRequired,
+  filterText: PropTypes.string.isRequired,
 };
 
 export default Currencies;

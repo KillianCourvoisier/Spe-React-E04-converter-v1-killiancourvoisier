@@ -73,6 +73,7 @@ class Converter extends React.Component {
         {
           opened && (
           <Currencies
+            filterText={filter}
             selectedCurrency={selectedCurrency}
             currenciesList={filteredCurrencies}
             onCurrencyClick={this.changeCurrencyValue}
