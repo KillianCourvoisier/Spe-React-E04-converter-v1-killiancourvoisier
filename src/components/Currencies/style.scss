@@ -19,6 +19,11 @@
     font-weight: 500;
     transition: background-color 1s;
     cursor: pointer;
+    &--active{
+        background-color: vars.$color;
+        color: #fff;
+        transition-duration: vars.$transition-fast;
+    }
     &:hover {
         background-color: vars.$color-alt;
         transition-duration: vars.$transition-fast;

@@ -11,7 +11,7 @@ const Header = ({ baseAmount, onInputChange }) => (
         defaultValue={baseAmount}
         onChange={
         (evt) => {
-          const newValue = parseInt(evt.target.value, 10);
+          const newValue = parseFloat(evt.target.value, 10);
           onInputChange(newValue);
         }
       }

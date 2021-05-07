@@ -38,7 +38,7 @@ class Converter extends React.Component {
     const currencyObject = currenciesList.find(
       (currencyInArray) => currencyInArray.name === selectedCurrency,
     );
-    return parseInt((baseAmount * currencyObject.rate), 10).toFixed(2);
+    return parseFloat((baseAmount * currencyObject.rate), 10).toFixed(2);
   }
 
   changeBaseValue = (newBaseValue) => {
@@ -59,6 +59,7 @@ class Converter extends React.Component {
         {
           opened && (
           <Currencies
+            selectedCurrency={selectedCurrency}
             currenciesList={currenciesList}
             onCurrencyClick={this.changeCurrencyValue}
           />

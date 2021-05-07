@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './style.scss';
 
-const Currencies = ({ currenciesList, onCurrencyClick }) => (
+const Currencies = ({ currenciesList, onCurrencyClick, selectedCurrency }) => (
   <div className="currencies">
     <div className="currencies-title">
       Currencies
@@ -12,7 +12,7 @@ const Currencies = ({ currenciesList, onCurrencyClick }) => (
         currenciesList.map((currencyObject) => (
           <li
             key={currencyObject.name}
-            className="currency"
+            className={currencyObject.name === selectedCurrency ? 'currency currency--active' : 'currency'}
             onClick={() => {
               onCurrencyClick(currencyObject.name);
             }}
@@ -32,6 +32,7 @@ Currencies.propTypes = {
     rate: PropTypes.number.isRequired,
   })).isRequired,
   onCurrencyClick: PropTypes.func.isRequired,
+  selectedCurrency: PropTypes.string.isRequired,
 };
 
 export default Currencies;
