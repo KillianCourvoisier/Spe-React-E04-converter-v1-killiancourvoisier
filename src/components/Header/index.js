@@ -8,7 +8,7 @@ const Header = ({ baseAmount, onInputChange }) => (
     <p className="header-amount">
       <input
         type="number"
-        defaultValue={baseAmount}
+        value={baseAmount}
         onChange={
         (evt) => {
           const newValue = parseFloat(evt.target.value, 10);

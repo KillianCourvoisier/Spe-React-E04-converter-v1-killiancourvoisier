@@ -21,6 +21,11 @@ class Converter extends React.Component {
 
   componentDidMount() {
     this.updatePageTitles();
+    document.addEventListener('keyup', (evt) => {
+      if (evt.key === 'Escape') {
+        this.toggle();
+      }
+    });
   }
 
   componentDidUpdate() {
