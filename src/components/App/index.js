@@ -7,9 +7,9 @@ import './styles.css';
 import Amount from '../Amount';
 import Currencies from '../Currencies';
 import Header from '../Header';
+import Toggler from '../Toggler';
 
 import currenciesList from '../../data/currencies';
-import Toggler from '../Toggler';
 
 class Converter extends React.Component {
   state = {
@@ -17,6 +17,20 @@ class Converter extends React.Component {
     baseAmount: 1,
     selectedCurrency: 'United States Dollar',
     filter: '',
+  }
+
+  componentDidMount() {
+    this.updatePageTitles();
+  }
+
+  componentDidUpdate() {
+    this.updatePageTitles();
+  }
+
+  // eslint-disable-next-line react/sort-comp
+  updatePageTitles() {
+    const { selectedCurrency } = this.state;
+    document.title = `Euros ->${selectedCurrency}`;
   }
 
   toggle = () => {

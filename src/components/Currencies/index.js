@@ -1,12 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './style.scss';
+import TestLifeCycle from '../TestLifeCycle';
 
 const Currencies = ({
   currenciesList, onCurrencyClick, selectedCurrency, onFilterChange, filterText,
 }) => (
   <div className="currencies">
     <div className="currencies-title">
+      <TestLifeCycle />
       <input
         type="text"
         className="currencies-search "
