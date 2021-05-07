@@ -2,10 +2,20 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './style.scss';
 
-const Currencies = ({ currenciesList, onCurrencyClick, selectedCurrency }) => (
+const Currencies = ({
+  currenciesList, onCurrencyClick, selectedCurrency, onFilterChange,
+}) => (
   <div className="currencies">
     <div className="currencies-title">
-      Currencies
+      <input
+        type="text"
+        className="currencies-search "
+        placeholder="Filtrer les devises"
+        onChange={(evt) => {
+          const textInput = evt.target.value;
+          onFilterChange(textInput);
+        }}
+      />
     </div>
     <ul className="currencies-list">
       {
@@ -33,6 +43,7 @@ Currencies.propTypes = {
   })).isRequired,
   onCurrencyClick: PropTypes.func.isRequired,
   selectedCurrency: PropTypes.string.isRequired,
+  onFilterChange: PropTypes.func.isRequired,
 };
 
 export default Currencies;
